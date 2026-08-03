@@ -175,3 +175,92 @@
     }
 
 }
+/* ===========================
+   Product Details
+=========================== */
+
+.details-section{
+
+    width:90%;
+
+    margin:70px auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+
+    align-items:center;
+}
+
+.details-image{
+
+    height:420px;
+
+    background:#D1FAE5;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:15px;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#166534;
+}
+
+.details-info h1{
+
+    color:#1E3A5F;
+
+    margin-bottom:15px;
+}
+
+.details-info h2{
+
+    color:#16A34A;
+
+    margin-bottom:20px;
+}
+
+.details-info p{
+
+    margin:12px 0;
+
+    color:#555;
+}
+
+.details-info h3{
+
+    margin-top:25px;
+
+    margin-bottom:10px;
+
+    color:#1E3A5F;
+}
+
+.details-buttons{
+
+    margin-top:30px;
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+@media(max-width:768px){
+
+    .details-section{
+
+        grid-template-columns:1fr;
+    }
+
+}
