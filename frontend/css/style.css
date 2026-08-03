@@ -1,0 +1,130 @@
+/* ===========================
+   Google Font
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===========================
+   Global Style
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    width:100%;
+}
+
+section{
+    padding:70px 10%;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.btn{
+
+    display:inline-block;
+
+    background:#2ecc71;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+    font-weight:600;
+}
+
+.btn:hover{
+
+    background:#27ae60;
+}
+
+.btn-outline{
+
+    background:transparent;
+
+    color:#2ecc71;
+
+    border:2px solid #2ecc71;
+
+    margin-left:10px;
+}
+
+.btn-outline:hover{
+
+    background:#2ecc71;
+
+    color:white;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+}
+
+.card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+}
+
+/* ===========================
+   Section Title
+=========================== */
+
+h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#2c3e50;
+}

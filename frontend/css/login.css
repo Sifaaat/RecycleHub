@@ -1,0 +1,198 @@
+/* ===========================
+   Login Section
+=========================== */
+
+.login-section{
+
+    min-height:85vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#e8fff2,#d8f0ff);
+
+    padding:40px 20px;
+}
+
+/* ===========================
+   Login Card
+=========================== */
+
+.login-card{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#fff;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.login-card h2{
+
+    text-align:center;
+
+    color:#1e3a5f;
+
+    margin-bottom:10px;
+}
+
+.login-card p{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:30px;
+}
+
+/* ===========================
+   Form
+=========================== */
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+}
+
+.input-group label{
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#333;
+}
+
+.input-group input{
+
+    padding:14px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.input-group input:focus{
+
+    border-color:#16A34A;
+
+    box-shadow:0 0 8px rgba(22,163,74,.2);
+}
+
+/* ===========================
+   Options
+=========================== */
+
+.options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+}
+
+.options a{
+
+    color:#16A34A;
+
+    text-decoration:none;
+}
+
+.options a:hover{
+
+    text-decoration:underline;
+}
+
+/* ===========================
+   Button
+=========================== */
+
+.login-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#16A34A;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.login-btn:hover{
+
+    background:#15803D;
+}
+
+/* ===========================
+   Register
+=========================== */
+
+.register-text{
+
+    margin-top:25px;
+
+    text-align:center;
+}
+
+.register-text a{
+
+    color:#16A34A;
+
+    font-weight:600;
+
+    text-decoration:none;
+}
+
+.register-text a:hover{
+
+    text-decoration:underline;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .login-card{
+
+        padding:30px 20px;
+    }
+
+}

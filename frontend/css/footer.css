@@ -1,0 +1,46 @@
+/* ===========================
+   Footer
+=========================== */
+
+footer{
+
+    background:#1e3a5f;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    margin-top:60px;
+}
+
+footer h2{
+
+    color:white;
+
+    margin-bottom:15px;
+
+    font-size:30px;
+}
+
+footer p{
+
+    margin:8px 0;
+
+    color:#dcdcdc;
+
+    font-size:15px;
+}
+
+footer a{
+
+    color:#2ecc71;
+
+    text-decoration:none;
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+}
