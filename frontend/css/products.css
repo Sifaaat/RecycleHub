@@ -1,0 +1,177 @@
+/* ===========================
+   Products Banner
+=========================== */
+
+.products-banner{
+
+    background:linear-gradient(135deg,#16A34A,#0F766E);
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:70px 20px;
+}
+
+.products-banner h1{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+}
+
+.products-banner p{
+
+    font-size:18px;
+}
+
+
+/* ===========================
+   Search
+=========================== */
+
+.search-section{
+
+    width:90%;
+
+    margin:40px auto;
+
+    text-align:center;
+}
+
+.search-section input{
+
+    width:100%;
+
+    max-width:500px;
+
+    padding:15px;
+
+    border:2px solid #16A34A;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.search-section input:focus{
+
+    box-shadow:0 0 8px rgba(22,163,74,.3);
+}
+
+
+/* ===========================
+   Product Grid
+=========================== */
+
+.products-container{
+
+    width:90%;
+
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+}
+
+
+/* ===========================
+   Product Card
+=========================== */
+
+.product-card{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+}
+
+
+/* ===========================
+   Image Placeholder
+=========================== */
+
+.product-image{
+
+    height:180px;
+
+    background:#D1FAE5;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#166534;
+}
+
+
+/* ===========================
+   Product Info
+=========================== */
+
+.product-info{
+
+    padding:20px;
+}
+
+.product-info h3{
+
+    margin-bottom:10px;
+
+    color:#1E3A5F;
+}
+
+.product-info p{
+
+    margin:8px 0;
+
+    color:#555;
+}
+
+.product-info .btn{
+
+    margin-top:15px;
+
+    display:inline-block;
+}
+
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .products-banner h1{
+
+        font-size:32px;
+    }
+
+    .products-banner p{
+
+        font-size:16px;
+    }
+
+}
