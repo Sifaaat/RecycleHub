@@ -25,3 +25,18 @@ searchInput.addEventListener("keyup", function () {
     });
 
 });
+const productForm = document.getElementById("productForm");
+
+if(productForm){
+
+productForm.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    alert("Product Added Successfully!");
+
+    productForm.reset();
+
+});
+
+}
