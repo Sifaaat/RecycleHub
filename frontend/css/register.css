@@ -1,0 +1,171 @@
+/* ===========================
+   Register Section
+=========================== */
+
+.register-section{
+
+    min-height:85vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#e8fff2,#d8f0ff);
+
+    padding:40px 20px;
+}
+
+/* ===========================
+   Register Card
+=========================== */
+
+.register-card{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:#ffffff;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.register-card h2{
+
+    text-align:center;
+
+    color:#1e3a5f;
+
+    margin-bottom:10px;
+}
+
+.register-card p{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:30px;
+}
+
+/* ===========================
+   Form
+=========================== */
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+}
+
+.input-group label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:#333;
+}
+
+.input-group input{
+
+    padding:14px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.input-group input:focus{
+
+    border-color:#16A34A;
+
+    box-shadow:0 0 8px rgba(22,163,74,.2);
+}
+
+/* ===========================
+   Register Button
+=========================== */
+
+.register-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#16A34A;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.register-btn:hover{
+
+    background:#15803D;
+}
+
+/* ===========================
+   Login Text
+=========================== */
+
+.login-text{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#555;
+}
+
+.login-text a{
+
+    color:#16A34A;
+
+    font-weight:600;
+
+    text-decoration:none;
+}
+
+.login-text a:hover{
+
+    text-decoration:underline;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .register-card{
+
+        padding:30px 20px;
+    }
+
+}
