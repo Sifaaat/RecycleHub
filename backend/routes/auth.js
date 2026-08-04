@@ -3,9 +3,8 @@ const express = require("express");
 const router = express.Router();
 
 const {
-
-    registerUser
-
+    registerUser,
+    loginUser
 } = require("../controllers/authController");
 
 // ===============================
@@ -13,5 +12,26 @@ const {
 // ===============================
 
 router.post("/register", registerUser);
+
+// ===============================
+// Login Route
+// ===============================
+
+router.post("/login", loginUser);
+
+// ===============================
+// Test Route
+// ===============================
+
+router.get("/test", (req, res) => {
+
+    res.status(200).json({
+
+        success: true,
+        message: "Auth Route Working"
+
+    });
+
+});
 
 module.exports = router;
