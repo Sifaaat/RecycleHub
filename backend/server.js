@@ -45,22 +45,7 @@ app.get("/", (req, res) => {
 });
 
 // ===============================
-// API Check Route
-// ===============================
-
-app.get("/api/check", (req, res) => {
-
-    res.status(200).json({
-
-        success: true,
-        message: "API Working"
-
-    });
-
-});
-
-// ===============================
-// Database Test Route
+// Database Test
 // ===============================
 
 app.get("/api/test-db", async (req, res) => {
@@ -80,8 +65,6 @@ app.get("/api/test-db", async (req, res) => {
     }
 
     catch (error) {
-
-        console.error(error);
 
         res.status(500).json({
 
@@ -127,8 +110,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
 
     console.log("=================================");
-    console.log(" RecycleHub Backend Started");
-    console.log(` Running : http://localhost:${PORT}`);
+    console.log("RecycleHub Backend Started");
+    console.log(`Running : http://localhost:${PORT}`);
     console.log("=================================");
 
 });
