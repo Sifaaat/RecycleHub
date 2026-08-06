@@ -141,6 +141,12 @@ async function loadProductDetails() {
         }
     }
 
+    const currentUser = getUser();
+    const isOwner = currentUser && currentUser.id === p.user_id;
+    const deleteBtnHTML = isOwner
+        ? '<button id="deleteBtn" class="btn btn-outline">Delete</button>'
+        : "";
+
     detailsInfo.innerHTML = `
         <h1>${p.name}</h1>
         <h2>৳${p.price}</h2>
@@ -153,6 +159,7 @@ async function loadProductDetails() {
         <p>${p.description || "No description provided."}</p>
         <div class="details-buttons">
             <button id="contactBtn" class="btn">Contact Seller</button>
+            ${deleteBtnHTML}
             <a href="products.html" class="btn btn-outline">Back</a>
         </div>`;
 
@@ -172,6 +179,23 @@ async function loadProductDetails() {
             if (call) {
                 window.location.href = "tel:" + phone;
             }
+        });
+    }
+
+    // Delete button (only shown to the product owner)
+    const deleteBtn = document.getElementById("deleteBtn");
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", async function () {
+            if (!confirm("Are you sure you want to delete this product?")) return;
+
+            const { ok, data } = await apiRequest("/products/" + p.id, "DELETE", null, true);
+            if (!ok || !data.success) {
+                alert(data.message || "Could not delete product.");
+                return;
+            }
+
+            alert("Product deleted.");
+            window.location.href = "products.html";
         });
     }
 }
