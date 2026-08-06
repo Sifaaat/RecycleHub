@@ -7,7 +7,7 @@ const searchInput = document.getElementById("searchInput");
 let allProducts = [];
 
 function productCard(p) {
-    const imgSrc = p.image ? `http://localhost:5000${p.image}` : null;
+    const imgSrc = p.image ? p.image : null;
     const imgHTML = imgSrc
         ? `<img src="${imgSrc}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">`
         : `<div style="height:100%; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:bold; color:#166534;">${p.category}</div>`;
@@ -89,7 +89,7 @@ if (productForm) {
         // Send FormData with fetch (don't set Content-Type header — browser sets it with boundary)
         try {
             const token = getToken();
-            const res = await fetch("http://localhost:5000/api/products", {
+            const res = await fetch("/api/products", {
                 method: "POST",
                 headers: { "Authorization": "Bearer " + token },
                 body: formData
@@ -135,7 +135,7 @@ async function loadProductDetails() {
     const imageBox = document.querySelector(".details-image");
     if (imageBox) {
         if (p.image) {
-            imageBox.innerHTML = `<img src="http://localhost:5000${p.image}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">`;
+            imageBox.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">`;
         } else {
             imageBox.textContent = p.category;
         }

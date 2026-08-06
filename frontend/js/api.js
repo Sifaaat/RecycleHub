@@ -2,7 +2,8 @@
 // RecycleHub API Helper
 // ===============================
 
-const API_URL = "http://localhost:5000/api";
+// Use relative path so it works both locally and when deployed
+const API_URL = "/api";
 
 // ---- Token & user storage ----
 function saveAuth(token, user) {

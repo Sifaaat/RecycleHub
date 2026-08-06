@@ -9,6 +9,10 @@ const app = express();
 
 const pool = require("./config/db");
 
+// Ensure database tables exist (safe to run on every startup)
+const ensureTables = require("./database/init");
+ensureTables().catch((err) => console.error("Table setup error:", err.message));
+
 // Middleware
 app.use(cors());
 app.use(express.json());
