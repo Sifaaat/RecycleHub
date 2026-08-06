@@ -16,6 +16,9 @@ app.use(express.json());
 // Serve the frontend (so http://localhost:5000 opens your site)
 app.use(express.static(path.join(__dirname, "../frontend")));
 
+// Serve uploaded images/files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // API Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/users", require("./routes/users"));
@@ -39,6 +42,12 @@ app.get("/api/test-db", async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
+});
+
+// Error handler (e.g. multer file-too-big / wrong-type errors)
+app.use((err, req, res, next) => {
+    console.error(err.message);
+    res.status(400).json({ success: false, message: err.message });
 });
 
 const PORT = process.env.PORT || 5000;

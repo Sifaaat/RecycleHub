@@ -7,9 +7,14 @@ const searchInput = document.getElementById("searchInput");
 let allProducts = [];
 
 function productCard(p) {
+    const imgSrc = p.image ? `http://localhost:5000${p.image}` : null;
+    const imgHTML = imgSrc
+        ? `<img src="${imgSrc}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">`
+        : `<div style="height:100%; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:bold; color:#166534;">${p.category}</div>`;
+
     return `
     <div class="product-card">
-        <div class="product-image">${p.category}</div>
+        <div class="product-image">${imgHTML}</div>
         <div class="product-info">
             <h3>${p.name}</h3>
             <p>Price: ৳${p.price}</p>
@@ -62,31 +67,46 @@ if (productForm) {
     productForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const imageInput = document.getElementById("image");
-        const body = {
-            name: document.getElementById("productName").value.trim(),
-            category: document.getElementById("category").value,
-            price: document.getElementById("price").value,
-            quantity: document.getElementById("quantity").value,
-            location: document.getElementById("location").value.trim(),
-            description: document.getElementById("description").value.trim(),
-            image: imageInput && imageInput.files[0] ? imageInput.files[0].name : null
-        };
+        // Build FormData (for file upload)
+        const formData = new FormData();
+        formData.append("name", document.getElementById("productName").value.trim());
+        formData.append("category", document.getElementById("category").value);
+        formData.append("price", document.getElementById("price").value);
+        formData.append("quantity", document.getElementById("quantity").value);
+        formData.append("location", document.getElementById("location").value.trim());
+        formData.append("description", document.getElementById("description").value.trim());
 
-        if (!body.name || !body.price) {
+        const imageInput = document.getElementById("image");
+        if (imageInput && imageInput.files[0]) {
+            formData.append("image", imageInput.files[0]);
+        }
+
+        if (!formData.get("name") || !formData.get("price")) {
             alert("Please enter product name and price.");
             return;
         }
 
-        const { ok, data } = await apiRequest("/products", "POST", body, true);
-        if (!ok || !data.success) {
-            alert(data.message || "Could not add product.");
-            return;
-        }
+        // Send FormData with fetch (don't set Content-Type header — browser sets it with boundary)
+        try {
+            const token = getToken();
+            const res = await fetch("http://localhost:5000/api/products", {
+                method: "POST",
+                headers: { "Authorization": "Bearer " + token },
+                body: formData
+            });
+            const data = await res.json();
 
-        alert("Product Added Successfully!");
-        productForm.reset();
-        window.location.href = "products.html";
+            if (!res.ok || !data.success) {
+                alert(data.message || "Could not add product.");
+                return;
+            }
+
+            alert("Product Added Successfully!");
+            productForm.reset();
+            window.location.href = "products.html";
+        } catch (err) {
+            alert("Server error: " + err.message);
+        }
     });
 }
 
@@ -97,6 +117,9 @@ const detailsInfo = document.querySelector(".details-info");
 
 async function loadProductDetails() {
     if (!detailsInfo) return;
+
+    // Must be logged in to view product details / contact seller
+    requireAuth();
 
     const id = new URLSearchParams(window.location.search).get("id");
     if (!id) return; // no id -> keep the demo content
@@ -110,7 +133,13 @@ async function loadProductDetails() {
 
     const p = data.product;
     const imageBox = document.querySelector(".details-image");
-    if (imageBox) imageBox.textContent = p.category;
+    if (imageBox) {
+        if (p.image) {
+            imageBox.innerHTML = `<img src="http://localhost:5000${p.image}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">`;
+        } else {
+            imageBox.textContent = p.category;
+        }
+    }
 
     detailsInfo.innerHTML = `
         <h1>${p.name}</h1>

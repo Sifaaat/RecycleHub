@@ -5,7 +5,7 @@ const pool = require("../config/db");
 // ===============================
 const createProduct = async (req, res) => {
     try {
-        const { name, category, price, quantity, location, description, image } = req.body;
+        const { name, category, price, quantity, location, description } = req.body;
 
         if (!name || !category || !price) {
             return res.status(400).json({
@@ -13,6 +13,9 @@ const createProduct = async (req, res) => {
                 message: "Name, category and price are required."
             });
         }
+
+        // multer puts the uploaded file in req.file
+        const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
 
         const result = await pool.query(
             `INSERT INTO products
@@ -27,7 +30,7 @@ const createProduct = async (req, res) => {
                 quantity || 0,
                 location || null,
                 description || null,
-                image || null
+                imagePath
             ]
         );
 
