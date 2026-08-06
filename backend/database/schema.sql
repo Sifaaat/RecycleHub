@@ -1,83 +1,40 @@
--- ==========================================
--- RecycleHub Database
--- ==========================================
+-- Drop in dependency order (products references users)
+DROP TABLE IF EXISTS contact_messages CASCADE;
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
-CREATE DATABASE recyclehub;
-
--- PostgreSQL-এ database create করার পর
--- recyclehub database select করে নিচের table গুলো run করবে।
-
--- ==========================================
--- USERS TABLE
--- ==========================================
-
+-- ===== Users =====
 CREATE TABLE users (
-
     id SERIAL PRIMARY KEY,
-
     full_name VARCHAR(100) NOT NULL,
-
     email VARCHAR(100) UNIQUE NOT NULL,
-
     phone VARCHAR(20) UNIQUE NOT NULL,
-
-    password VARCHAR(255) NOT NULL,
-
+    password TEXT NOT NULL,
     role VARCHAR(20) DEFAULT 'user',
-
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
 );
 
--- ==========================================
--- PRODUCTS TABLE
--- ==========================================
-
+-- ===== Products =====
 CREATE TABLE products (
-
     id SERIAL PRIMARY KEY,
-
-    product_name VARCHAR(150) NOT NULL,
-
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    name VARCHAR(150) NOT NULL,
     category VARCHAR(50) NOT NULL,
-
-    price DECIMAL(10,2) NOT NULL,
-
-    quantity INT NOT NULL,
-
+    price NUMERIC(10,2) NOT NULL,
+    quantity NUMERIC(10,2) DEFAULT 0,
     location VARCHAR(100),
-
     description TEXT,
-
     image VARCHAR(255),
-
-    user_id INT,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT fk_user
-        FOREIGN KEY(user_id)
-        REFERENCES users(id)
-        ON DELETE CASCADE
-
+    status VARCHAR(20) DEFAULT 'Available',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ==========================================
--- CONTACT TABLE
--- ==========================================
-
-CREATE TABLE contacts (
-
+-- ===== Contact Messages =====
+CREATE TABLE contact_messages (
     id SERIAL PRIMARY KEY,
-
-    full_name VARCHAR(100),
-
-    email VARCHAR(100),
-
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     subject VARCHAR(150),
-
-    message TEXT,
-
+    message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
 );

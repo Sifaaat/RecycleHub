@@ -10,137 +10,61 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
-
 <body>
 
-    <!-- ================= Navbar ================= -->
-
     <header>
-
         <nav class="navbar">
-
             <div class="logo">
-                <h2>RecycleHub</h2>
+                <a href="index.html">Recycle<span>Hub</span></a>
             </div>
-
             <ul class="nav-links">
-
-                <li><a href="index.html">Home</a></li>
-
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-
-                <li><a href="add-product.html">Add Product</a></li>
-
+                <li><a href="add-product.html">Sell</a></li>
                 <li><a href="profile.html">Profile</a></li>
-
                 <li><a href="contact.html">Contact</a></li>
-
-                <li><a href="login.html">Login</a></li>
-
+                <li id="authLink"></li>
             </ul>
-
         </nav>
-
     </header>
 
-    <!-- ================= Hero ================= -->
-
     <section class="hero">
-
         <div class="hero-content">
-
             <h1>Recycle Smart,<br>Save Our Planet</h1>
-
-            <p>
-                Buy, Sell and Recycle Waste Materials Easily.
-            </p>
-
+            <p>Buy, Sell and Recycle Waste Materials Easily.</p>
             <div class="hero-btn">
-
                 <a href="products.html" class="btn">Browse Products</a>
-
-                <a href="add-product.html" class="btn btn-outline">
-                    Sell Recyclables
-                </a>
-
+                <a href="add-product.html" class="btn btn-outline">Sell Recyclables</a>
             </div>
-
         </div>
-
     </section>
-
-    <!-- ================= Featured Products ================= -->
 
     <section class="featured">
-
         <h2>Featured Categories</h2>
-
         <div class="cards">
-
-            <div class="card">
-                <h3>Plastic</h3>
-                <p>Recycle plastic bottles and containers.</p>
-            </div>
-
-            <div class="card">
-                <h3>Paper</h3>
-                <p>Sell newspapers and cardboard.</p>
-            </div>
-
-            <div class="card">
-                <h3>Glass</h3>
-                <p>Recycle bottles and glass materials.</p>
-            </div>
-
-            <div class="card">
-                <h3>Metal</h3>
-                <p>Buy & sell recyclable metals.</p>
-            </div>
-
+            <div class="card"><h3>Plastic</h3><p>Recycle plastic bottles and containers.</p></div>
+            <div class="card"><h3>Paper</h3><p>Sell newspapers and cardboard.</p></div>
+            <div class="card"><h3>Glass</h3><p>Recycle bottles and glass materials.</p></div>
+            <div class="card"><h3>Metal</h3><p>Buy &amp; sell recyclable metals.</p></div>
         </div>
-
     </section>
-
-    <!-- ================= Why Choose ================= -->
 
     <section class="why-us">
-
         <h2>Why Choose RecycleHub?</h2>
-
         <div class="why-grid">
-
-            <div class="why-box">
-                <h3>♻ Eco Friendly</h3>
-                <p>Help reduce environmental pollution.</p>
-            </div>
-
-            <div class="why-box">
-                <h3>💰 Earn Money</h3>
-                <p>Sell recyclable materials easily.</p>
-            </div>
-
-            <div class="why-box">
-                <h3>🌍 Better Future</h3>
-                <p>Build a greener tomorrow together.</p>
-            </div>
-
+            <div class="why-box"><h3>♻ Eco Friendly</h3><p>Help reduce environmental pollution.</p></div>
+            <div class="why-box"><h3>💰 Earn Money</h3><p>Sell recyclable materials easily.</p></div>
+            <div class="why-box"><h3>🌍 Better Future</h3><p>Build a greener tomorrow together.</p></div>
         </div>
-
     </section>
 
-    <!-- ================= Footer ================= -->
-
     <footer>
-
         <h2>RecycleHub</h2>
-
         <p>Recycle Today For A Better Tomorrow.</p>
-
         <p>© 2026 RecycleHub. All Rights Reserved.</p>
-
     </footer>
 
+    <script src="js/api.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>

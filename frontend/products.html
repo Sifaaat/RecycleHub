@@ -1,163 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>RecycleHub | Products</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/products.css">
     <link rel="stylesheet" href="css/footer.css">
-
 </head>
-
 <body>
 
 <header>
-
     <nav class="navbar">
-
         <div class="logo">
             <a href="index.html">Recycle<span>Hub</span></a>
         </div>
-
-        <ul class="nav-menu">
-
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-
             <li><a href="products.html" class="active">Products</a></li>
-
             <li><a href="add-product.html">Sell</a></li>
-
             <li><a href="profile.html">Profile</a></li>
-
             <li><a href="contact.html">Contact</a></li>
-
+            <li id="authLink"></li>
         </ul>
-
     </nav>
-
 </header>
 
-<!-- ================= Products Banner ================= -->
-
 <section class="products-banner">
-
     <h1>Recyclable Products</h1>
-
     <p>Buy and Sell Recyclable Materials Easily</p>
-
 </section>
-
-<!-- ================= Search ================= -->
 
 <section class="search-section">
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search Product..."
-    >
-
+    <input type="text" id="searchInput" placeholder="Search Product...">
 </section>
 
-<!-- ================= Products ================= -->
-
+<!-- Products are loaded here by js/products.js -->
 <section class="products-container">
-
-    <div class="product-card">
-
-        <div class="product-image">
-
-            Plastic Bottles
-
-        </div>
-
-        <div class="product-info">
-
-            <h3>Plastic Bottles</h3>
-
-            <p>Price: ৳150</p>
-
-            <p>Location: Dhaka</p>
-
-            <a href="product-details.html" class="btn">
-
-                View Details
-
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="product-card">
-
-        <div class="product-image">
-
-            Newspapers
-
-        </div>
-
-        <div class="product-info">
-
-            <h3>Old Newspapers</h3>
-
-            <p>Price: ৳100</p>
-
-            <p>Location: Savar</p>
-
-            <a href="product-details.html" class="btn">
-
-                View Details
-
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="product-card">
-
-        <div class="product-image">
-
-            Metal Scrap
-
-        </div>
-
-        <div class="product-info">
-
-            <h3>Metal Scrap</h3>
-
-            <p>Price: ৳450</p>
-
-            <p>Location: Gazipur</p>
-
-            <a href="product-details.html" class="btn">
-
-                View Details
-
-            </a>
-
-        </div>
-
-    </div>
-
+    <p>Loading products...</p>
 </section>
 
 <footer>
-
     <p>© 2026 RecycleHub. All Rights Reserved.</p>
-
 </footer>
 
+<script src="js/api.js"></script>
 <script src="js/products.js"></script>
-
 </body>
-
 </html>

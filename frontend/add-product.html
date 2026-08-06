@@ -1,146 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>RecycleHub | Add Product</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/products.css">
     <link rel="stylesheet" href="css/footer.css">
-
 </head>
-
 <body>
 
 <header>
-
     <nav class="navbar">
-
         <div class="logo">
-
             <a href="index.html">Recycle<span>Hub</span></a>
-
         </div>
-
-        <ul class="nav-menu">
-
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-
             <li><a href="products.html">Products</a></li>
-
             <li><a href="add-product.html" class="active">Sell</a></li>
-
             <li><a href="profile.html">Profile</a></li>
-
             <li><a href="contact.html">Contact</a></li>
-
+            <li id="authLink"></li>
         </ul>
-
     </nav>
-
 </header>
 
 <section class="add-product-section">
-
     <div class="add-product-card">
-
         <h2>Add New Product</h2>
 
         <form id="productForm">
-
             <div class="input-group">
-
                 <label>Product Name</label>
-
                 <input type="text" id="productName" placeholder="Enter product name" required>
-
             </div>
 
             <div class="input-group">
-
                 <label>Category</label>
-
                 <select id="category">
-
                     <option>Plastic</option>
-
                     <option>Paper</option>
-
                     <option>Glass</option>
-
                     <option>Metal</option>
-
                     <option>Electronics</option>
-
                 </select>
-
             </div>
 
             <div class="input-group">
-
                 <label>Price (৳)</label>
-
                 <input type="number" id="price" placeholder="Enter price" required>
-
             </div>
 
             <div class="input-group">
-
                 <label>Quantity (Kg)</label>
-
                 <input type="number" id="quantity" placeholder="Enter quantity">
-
             </div>
 
             <div class="input-group">
-
                 <label>Location</label>
-
                 <input type="text" id="location" placeholder="Enter location">
-
             </div>
 
             <div class="input-group">
-
                 <label>Description</label>
-
                 <textarea id="description" rows="5" placeholder="Write product description"></textarea>
-
             </div>
 
             <div class="input-group">
-
                 <label>Upload Image</label>
-
                 <input type="file" id="image">
             </div>
 
-            <button type="submit" class="register-btn">
-
-                Add Product
-
-            </button>
-
+            <button type="submit" class="register-btn">Add Product</button>
         </form>
-
     </div>
-
 </section>
 
 <footer>
-
-<p>© 2026 RecycleHub. All Rights Reserved.</p>
-
+    <p>© 2026 RecycleHub. All Rights Reserved.</p>
 </footer>
 
+<script src="js/api.js"></script>
 <script src="js/products.js"></script>
-
 </body>
-
 </html>

@@ -1,38 +1,34 @@
 const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", function (e) {
+if (loginForm) {
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    e.preventDefault();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-    const email = document.getElementById("email").value.trim();
+        if (email === "" || password === "") {
+            alert("Please fill in all fields.");
+            return;
+        }
+        if (!isValidEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+        if (!isStrongEnough(password)) {
+            alert("Password must be at least 6 characters.");
+            return;
+        }
 
-    const password = document.getElementById("password").value.trim();
+        const { ok, data } = await apiRequest("/auth/login", "POST", { email, password });
 
-    if (email === "" || password === "") {
+        if (!ok || !data.success) {
+            alert(data.message || "Login failed.");
+            return;
+        }
 
-        alert("Please fill in all fields.");
-
-        return;
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(email)) {
-
-        alert("Please enter a valid email address.");
-
-        return;
-    }
-
-    if (password.length < 6) {
-
-        alert("Password must be at least 6 characters.");
-
-        return;
-    }
-
-    alert("Login Successful!");
-
-    // Later:
-    // Connect with Node.js Backend
-});
+        saveAuth(data.token, data.user);
+        alert("Login Successful!");
+        window.location.href = "index.html";
+    });
+}

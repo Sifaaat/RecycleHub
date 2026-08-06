@@ -1,14 +1,5 @@
 // ===============================
-// RecycleHub Main JavaScript
+// RecycleHub Home Page
 // ===============================
-
 console.log("RecycleHub Loaded Successfully");
-
-// Future Features:
-//
-// Navbar Toggle
-// Product Search
-// Fetch Products
-// Contact Form
-// Login Validation
-// Register Validation
+// Navbar login/logout link is handled by api.js (renderAuthLink)

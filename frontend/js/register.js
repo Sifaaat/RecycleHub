@@ -1,61 +1,48 @@
-// ===============================
-// Register Form Validation
-// ===============================
-
 const registerForm = document.getElementById("registerForm");
 
-registerForm.addEventListener("submit", function (e) {
+if (registerForm) {
+    registerForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    e.preventDefault();
+        const full_name = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-    const fullname = document.getElementById("fullname").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+        if (!full_name || !email || !phone || !password || !confirmPassword) {
+            alert("Please fill in all fields.");
+            return;
+        }
+        if (!isValidEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+        if (!isValidPhone(phone)) {
+            alert("Please enter a valid phone number.");
+            return;
+        }
+        if (!isStrongEnough(password)) {
+            alert("Password must be at least 6 characters.");
+            return;
+        }
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
 
-    if (
-        fullname === "" ||
-        email === "" ||
-        phone === "" ||
-        password === "" ||
-        confirmPassword === ""
-    ) {
+        const { ok, data } = await apiRequest(
+            "/auth/register",
+            "POST",
+            { full_name, email, phone, password }
+        );
 
-        alert("Please fill in all fields.");
-        return;
-    }
+        if (!ok || !data.success) {
+            alert(data.message || "Registration failed.");
+            return;
+        }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(email)) {
-
-        alert("Please enter a valid email address.");
-        return;
-    }
-
-    if (phone.length < 11) {
-
-        alert("Please enter a valid phone number.");
-        return;
-    }
-
-    if (password.length < 6) {
-
-        alert("Password must be at least 6 characters.");
-        return;
-    }
-
-    if (password !== confirmPassword) {
-
-        alert("Passwords do not match.");
-        return;
-    }
-
-    alert("Registration Successful!");
-
-    registerForm.reset();
-
-    // Later:
-    // Send data to Node.js backend
-});
+        alert("Registration Successful! Please login.");
+        window.location.href = "login.html";
+    });
+}
