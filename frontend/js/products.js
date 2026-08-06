@@ -152,8 +152,27 @@ async function loadProductDetails() {
         <h3>Description</h3>
         <p>${p.description || "No description provided."}</p>
         <div class="details-buttons">
-            <a href="tel:${p.seller_phone || ""}" class="btn">Contact Seller</a>
+            <button id="contactBtn" class="btn">Contact Seller</button>
             <a href="products.html" class="btn btn-outline">Back</a>
         </div>`;
+
+    // Contact Seller button -> show phone / offer to call
+    const contactBtn = document.getElementById("contactBtn");
+    if (contactBtn) {
+        contactBtn.addEventListener("click", function () {
+            const phone = p.seller_phone;
+            const name = p.seller_name || "Seller";
+            if (!phone) {
+                alert("Seller contact number is not available.");
+                return;
+            }
+            const call = confirm(
+                "Contact " + name + "\n\nPhone: " + phone + "\n\nPress OK to call now."
+            );
+            if (call) {
+                window.location.href = "tel:" + phone;
+            }
+        });
+    }
 }
 loadProductDetails();
