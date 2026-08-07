@@ -1,8 +1,24 @@
 # ♻️ RecycleHub
 
+![Node.js](https://img.shields.io/badge/Node.js-20+-green?logo=node.js)
+![Express.js](https://img.shields.io/badge/Express.js-Backend-black?logo=express)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?logo=postgresql)
+![JWT](https://img.shields.io/badge/JWT-Authentication-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 A full-stack web marketplace for buying and selling recyclable materials. Users can list recyclable products, browse and search listings, and **chat with sellers in-app to negotiate prices** — all in one place.
 
 > Recycle Today For A Better Tomorrow.
+
+---
+
+## 🌐 Live Demo
+
+🔗 https://recyclehub-z869.onrender.com/
+
+## 📂 GitHub Repository
+
+🔗 https://github.com/Sifaaat/RecycleHub
 
 ---
 
@@ -30,6 +46,7 @@ A full-stack web marketplace for buying and selling recyclable materials. Users 
 | Auth | JSON Web Tokens (`jsonwebtoken`), `bcrypt` |
 | Uploads | `multer` (memory storage → base64 in DB) |
 | Config | `dotenv` |
+| Deployment | Render |
 
 ---
 
@@ -173,6 +190,43 @@ A "conversation" is defined by a `product_id` plus the pair of users talking abo
 
 ---
 
-## 📜 License
+## 📌 Future Improvements
 
-MIT © Sifat
+- Email verification & password reset
+- Admin dashboard with recycling statistics
+- Real-time chat (WebSockets instead of polling)
+- Notifications
+- Dark mode
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
+
+---
+
+## 👨‍💻 Author
+
+**Md. Sifat Ahmed**
+
+Software Engineering Student
+Daffodil International University
+
+GitHub: https://github.com/Sifaaat
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project helpful, don't forget to give it a star!
