@@ -14,8 +14,12 @@ const createProduct = async (req, res) => {
             });
         }
 
-        // multer puts the uploaded file in req.file
-        const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+        // multer keeps the uploaded file in memory (req.file.buffer).
+        // Store it as a base64 data URI directly in the database so it
+        // survives redeploys (no reliance on an ephemeral disk).
+        const image = req.file
+            ? `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`
+            : null;
 
         const result = await pool.query(
             `INSERT INTO products
@@ -30,7 +34,7 @@ const createProduct = async (req, res) => {
                 quantity || 0,
                 location || null,
                 description || null,
-                imagePath
+                image
             ]
         );
 

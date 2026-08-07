@@ -32,11 +32,15 @@ const createTables = async () => {
             quantity NUMERIC(10,2) DEFAULT 0,
             location VARCHAR(100),
             description TEXT,
-            image VARCHAR(255),
+            image TEXT,
             status VARCHAR(20) DEFAULT 'Available',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     `);
+
+    // Widen the image column on databases created before images were
+    // stored as base64 (was VARCHAR(255)). Safe to run every startup.
+    await pool.query(`ALTER TABLE products ALTER COLUMN image TYPE TEXT`);
 
     // ===== Contact Messages =====
     await pool.query(`
@@ -50,7 +54,19 @@ const createTables = async () => {
         )
     `);
 
-    console.log("✅ Tables ready: users, products, contact_messages");
+    // ===== Messages (buyer <-> seller chat per product) =====
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS messages (
+            id SERIAL PRIMARY KEY,
+            product_id  INTEGER REFERENCES products(id) ON DELETE CASCADE,
+            sender_id   INTEGER REFERENCES users(id)    ON DELETE CASCADE,
+            receiver_id INTEGER REFERENCES users(id)    ON DELETE CASCADE,
+            content     TEXT NOT NULL,
+            created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    console.log("✅ Tables ready: users, products, contact_messages, messages");
 };
 
 module.exports = createTables;

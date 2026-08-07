@@ -1,4 +1,5 @@
--- Drop in dependency order (products references users)
+-- Drop in dependency order (messages/products reference users)
+DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS contact_messages CASCADE;
 DROP TABLE IF EXISTS products CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
@@ -24,7 +25,7 @@ CREATE TABLE products (
     quantity NUMERIC(10,2) DEFAULT 0,
     location VARCHAR(100),
     description TEXT,
-    image VARCHAR(255),
+    image TEXT,
     status VARCHAR(20) DEFAULT 'Available',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -37,4 +38,14 @@ CREATE TABLE contact_messages (
     subject VARCHAR(150),
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ===== Messages (buyer <-> seller chat per product) =====
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    product_id  INTEGER REFERENCES products(id) ON DELETE CASCADE,
+    sender_id   INTEGER REFERENCES users(id)    ON DELETE CASCADE,
+    receiver_id INTEGER REFERENCES users(id)    ON DELETE CASCADE,
+    content     TEXT NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

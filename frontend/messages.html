@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecycleHub | Messages</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/messages.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">Recycle<span>Hub</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="add-product.html">Sell</a></li>
+            <li><a href="messages.html" class="active">Messages</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li id="authLink"></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="messages-section">
+    <!-- Left: list of conversations -->
+    <aside class="conversation-list" id="conversationList">
+        <h2>Chats</h2>
+        <p class="chat-empty">Loading conversations...</p>
+    </aside>
+
+    <!-- Right: open chat thread -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-placeholder" id="chatPlaceholder">
+            <p>Select a conversation to start chatting.</p>
+        </div>
+
+        <div class="chat-thread-wrap" id="chatThreadWrap" style="display:none;">
+            <div class="chat-header" id="chatHeader"></div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <form class="chat-form" id="chatForm">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="js/api.js"></script>
+<script src="js/messages.js"></script>
+</body>
+</html>

@@ -146,6 +146,10 @@ async function loadProductDetails() {
     const deleteBtnHTML = isOwner
         ? '<button id="deleteBtn" class="btn btn-outline">Delete</button>'
         : "";
+    // Owner shouldn't message themselves — only show Contact Seller to others.
+    const contactBtnHTML = isOwner
+        ? ""
+        : '<button id="contactBtn" class="btn">Contact Seller</button>';
 
     detailsInfo.innerHTML = `
         <h1>${p.name}</h1>
@@ -154,31 +158,20 @@ async function loadProductDetails() {
         <p><strong>Location:</strong> ${p.location || "N/A"}</p>
         <p><strong>Quantity:</strong> ${p.quantity} Kg</p>
         <p><strong>Seller:</strong> ${p.seller_name || "Unknown"}</p>
-        <p><strong>Phone:</strong> ${p.seller_phone || "N/A"}</p>
         <h3>Description</h3>
         <p>${p.description || "No description provided."}</p>
         <div class="details-buttons">
-            <button id="contactBtn" class="btn">Contact Seller</button>
+            ${contactBtnHTML}
             ${deleteBtnHTML}
             <a href="products.html" class="btn btn-outline">Back</a>
         </div>`;
 
-    // Contact Seller button -> show phone / offer to call
+    // Contact Seller -> open in-app chat thread for this product
     const contactBtn = document.getElementById("contactBtn");
     if (contactBtn) {
         contactBtn.addEventListener("click", function () {
-            const phone = p.seller_phone;
-            const name = p.seller_name || "Seller";
-            if (!phone) {
-                alert("Seller contact number is not available.");
-                return;
-            }
-            const call = confirm(
-                "Contact " + name + "\n\nPhone: " + phone + "\n\nPress OK to call now."
-            );
-            if (call) {
-                window.location.href = "tel:" + phone;
-            }
+            window.location.href =
+                "messages.html?product=" + p.id + "&to=" + p.user_id;
         });
     }
 

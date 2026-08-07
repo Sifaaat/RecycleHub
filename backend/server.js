@@ -28,6 +28,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/products", require("./routes/products"));
 app.use("/api/contact", require("./routes/contact"));
+app.use("/api/messages", require("./routes/messages"));
 
 // API welcome
 app.get("/api", (req, res) => {
